@@ -48,16 +48,8 @@ public class SellerDaoJDBC implements SellerDao {
       st.setInt(1,id);
       rs = st.executeQuery(); // gera um resultado e guarda na variável ResultSet rs que trará o resultado
       if(rs.next()){
-        Departments dep = new Departments();
-        dep.setId(rs.getInt("DepartmentId"));
-        dep.setName(rs.getString("DepName"));
-        Seller obj = new Seller();
-        obj.setId(rs.getInt("Id"));
-        obj.setName(rs.getString("Name"));
-        obj.setEmail(rs.getString("Email"));
-        obj.setSalary(rs.getDouble("BaseSalary"));
-        obj.setBirthDate(rs.getDate("BirthDate"));
-        obj.setDepartment(dep);
+        Departments dep = instantiateDepartment(rs);
+        Seller obj = instatiateSeller(rs, dep);
         return obj;
       }
       return null;
@@ -70,6 +62,24 @@ public class SellerDaoJDBC implements SellerDao {
       DB.closeResultSet(rs);
     }
     
+  }
+  
+  private Departments instantiateDepartment(ResultSet rs) throws SQLException{
+    Departments dep = new Departments();
+    dep.setId(rs.getInt("DepartmentId"));
+    dep.setName(rs.getString("DepName"));
+    return dep;
+  }
+  
+  private Seller instatiateSeller(ResultSet rs, Departments dep)  throws SQLException{
+    Seller obj = new Seller();
+    obj.setId(rs.getInt("Id"));
+    obj.setName(rs.getString("Name"));
+    obj.setEmail(rs.getString("Email"));
+    obj.setSalary(rs.getDouble("BaseSalary"));
+    obj.setBirthDate(rs.getDate("BirthDate"));
+    obj.setDepartment(dep);
+    return obj;
   }
   
   @Override

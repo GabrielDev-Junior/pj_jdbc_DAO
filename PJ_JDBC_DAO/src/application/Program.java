@@ -14,11 +14,6 @@ public class Program {
     Locale.setDefault(Locale.US);
     Scanner sc = new Scanner(System.in);
     
-    Departments obj = new Departments(1,"Books");
-    System.out.println(obj);
-    Seller fun = new Seller(1,"Robert","robert@gmail.com",new Date(),3000.0,obj);
-    System.out.println(fun);
-    
     System.out.print("Informe o id para busca: ");
     int id = sc.nextInt();
     
