@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -78,16 +78,16 @@ public class Seller  implements Serializable {
   }
   
   @Override
+  public int hashCode() {
+    return Objects.hashCode(id);
+  }
+  
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Seller seller = (Seller) o;
     return Objects.equals(id, seller.id);
-  }
-  
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(id);
   }
   
   @Override
