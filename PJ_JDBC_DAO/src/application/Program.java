@@ -6,6 +6,7 @@ import model.dao.DaoFactory;
 import model.dao.SellerDao;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -23,6 +24,18 @@ public class Program {
     
     System.out.println("Resultado: ");
     System.out.println(seller);
+    
+    System.out.println("Id para busca por Department: ");
+    Departments dep = new Departments(2,null);
+    
+    List<Seller> list = sellerDao.findByDepartment(dep);
+    
+    for(Seller obj : list){
+      if (list.isEmpty()){
+        System.out.println("Lista está vazia");
+      }
+      System.out.println(obj);
+    }
   }
 }
 
