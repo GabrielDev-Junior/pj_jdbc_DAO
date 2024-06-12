@@ -15,12 +15,12 @@ public class Program {
     Locale.setDefault(Locale.US);
     Scanner sc = new Scanner(System.in);
     
-    System.out.print("Teste 1 Informe o id para busca: ");
-    int id = sc.nextInt();
+    System.out.print("Teste 1 Informe o id para busca ");
+ 
     
     SellerDao sellerDao = DaoFactory.createSellerDao();
     
-    Seller seller = sellerDao.findById(id);
+    Seller seller = sellerDao.findById(2);
     
     System.out.println("Resultado: ");
     System.out.println(seller);
@@ -46,6 +46,11 @@ public class Program {
       }
       System.out.println(obj);
     }
+    
+    System.out.println(" Teste 4 Insert ");
+    Seller  newSeller = new Seller(null, "Greg", "greg@gmail.com",new Date(),4000.0,dep);
+    sellerDao.insert(newSeller);
+    System.out.println("Inserted!, new Id = "+ newSeller.getId());
   }
 }
 
