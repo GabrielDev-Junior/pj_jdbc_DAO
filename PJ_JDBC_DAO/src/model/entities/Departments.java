@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class Departments implements Serializable {
   @Serial
-  private static final long serialVersionUID =1L;
+  private static final long serialVersionUID = 1L;
   
   private Integer id;
   private String name;
   
-  public Departments(){
+  public Departments() {
   }
   
   public Departments(Integer id, String name) {
@@ -50,7 +50,7 @@ public class Departments implements Serializable {
   
   @Override
   public String toString() {
-    return id + " - " + name ;
+    return id + " - " + name;
   }
   
   

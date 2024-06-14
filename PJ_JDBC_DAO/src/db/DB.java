@@ -14,6 +14,7 @@ public class DB {
       if (conn == null) {
         Properties props = loadProperties();
         String url = props.getProperty("dburl");
+        
         conn = DriverManager.getConnection(url, props);
       }
       return conn;

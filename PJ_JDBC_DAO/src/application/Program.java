@@ -16,7 +16,6 @@ public class Program {
     Scanner sc = new Scanner(System.in);
     
     System.out.print("Teste 1 Informe o id para busca ");
- 
     
     SellerDao sellerDao = DaoFactory.createSellerDao();
     
@@ -26,12 +25,12 @@ public class Program {
     System.out.println(seller);
     
     System.out.println("Teste 2 Id para busca por Department: ");
-    Departments dep = new Departments(2,null);
+    Departments dep = new Departments(2, null);
     
     List<Seller> list = sellerDao.findByDepartment(dep);
     
-    for(Seller obj : list){
-      if (list.isEmpty()){
+    for (Seller obj : list) {
+      if (list.isEmpty()) {
         System.out.println("Lista está vazia");
       }
       System.out.println(obj);
@@ -40,17 +39,32 @@ public class Program {
     System.out.println(" Teste 3 findAll: ");
     
     list = sellerDao.findAll();
-    for(Seller obj : list){
-      if (list.isEmpty()){
+    for (Seller obj : list) {
+      if (list.isEmpty()) {
         System.out.println("Lista está vazia");
       }
       System.out.println(obj);
     }
     
     System.out.println(" Teste 4 Insert ");
-    Seller  newSeller = new Seller(null, "Greg", "greg@gmail.com",new Date(),4000.0,dep);
+    Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, dep);
     sellerDao.insert(newSeller);
-    System.out.println("Inserted!, new Id = "+ newSeller.getId());
+    System.out.println("Inserted!, new Id = " + newSeller.getId());
+    
+    System.out.println(" Teste 5 Update ");
+    //System.out.print("Informe o Id a ser Alterado: ");
+    Seller seller1 = sellerDao.findById(1);
+    seller1.setName("Martha Waine");
+    sellerDao.update(seller1);
+    System.out.println("Update Confirmado");
+    
+    System.out.println(" Teste 6 Delete ");
+    
+    System.out.print("Informe Id do funcionaria a ser deletado: ");
+    int idDelete = sc.nextInt();
+    sellerDao.deleteById(idDelete);
+    System.out.println("Delete completado");
+    
   }
 }
 
